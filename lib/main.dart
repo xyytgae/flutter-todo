@@ -67,28 +67,42 @@ class TodoListPage extends StatelessWidget {
   }
 }
 
-class TodoAddPage extends StatelessWidget {
+class TodoAddPage extends StatefulWidget {
   const TodoAddPage({super.key});
+
+  @override
+  _TodoAddPageState createState() => _TodoAddPageState();
+}
+
+class _TodoAddPageState extends State<TodoAddPage> {
+  String _text = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('リスト追加画面'),
+        title: const Text('リスト追加'),
       ),
       body: Container(
         padding: const EdgeInsets.all(64),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const TextField(),
+              Text(_text, style: const TextStyle(color: Colors.blue)),
+              TextField(onChanged: (String value) {
+                setState(() {
+                  _text = value;
+                });
+              }),
               const SizedBox(height: 8),
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop(_text);
+                    },
                     child: const Text('リスト追加',
                         style: TextStyle(color: Colors.white)),
                   )),
