@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: const TodoListPage(),
     );
   }
@@ -26,6 +26,9 @@ class TodoListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('リスト一覧'),
+      ),
       body: const Center(
         child: Text('リスト一覧画面'),
       ),
